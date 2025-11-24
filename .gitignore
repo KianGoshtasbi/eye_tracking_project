@@ -1,0 +1,4 @@
+# Python virtual environment
+venv/
+test_mediapipe.py 
+test_webcam.py
