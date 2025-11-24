@@ -31,6 +31,7 @@ class EyeTracker:
         
         
         self.ear_threshold = ear_threshold
+    
     #Formula to calculate Eye Aspect Ratio
     def calculate_ear(self, eye_landmarks):
         p1, p2, p3, p4, p5, p6 = eye_landmarks
@@ -102,11 +103,11 @@ class EyeTracker:
             eye_state = "OPEN" if avg_ear >= self.ear_threshold else "CLOSED"
             print(f"[INFO] EAR: {avg_ear:.2f}, Eyes {eye_state}")
             
-            
+            #Draws lines around the eyes
             cv2.polylines(frame, [np.array(left_coords, np.int32)], True, color, 2)
             cv2.polylines(frame, [np.array(right_coords, np.int32)], True, color, 2)
             
-            
+            #Displays whether eyes are open or closed along with EAR value
             cv2.putText(frame, f"EAR: {avg_ear:.2f} - {eye_state}", (30, 30),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.8, color, 2)
         else:
