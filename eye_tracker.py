@@ -103,7 +103,7 @@ class EyeTracker:
             eye_state = "OPEN" if avg_ear >= self.ear_threshold else "CLOSED"
             print(f"[INFO] EAR: {avg_ear:.2f}, Eyes {eye_state}")
             
-            #Draws lines around the eyes
+            #Draws lines around the eyes (Double ensure they are integers with np.int32)
             cv2.polylines(frame, [np.array(left_coords, np.int32)], True, color, 2)
             cv2.polylines(frame, [np.array(right_coords, np.int32)], True, color, 2)
             
